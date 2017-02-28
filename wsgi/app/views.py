@@ -17,7 +17,7 @@ mytasks=[
 }
 ]
 
-@app.route('/todo/api/task',methods=['GET'])
+@app.route('/todo/api/tasks',methods=['GET'])
 def get_tasks():
 	return jsonify({'tasks':mytasks})
 
