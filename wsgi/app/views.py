@@ -1,23 +1,6 @@
-from flask import Flask, jsonify
-
-app=Flask(__name__)
-
-mytasks=[
-{
-	'id':1,
-	'task':u'FInish Hello World',
-	'session': u'Week 7',
-	'done': True
-},
-{
-	'id': 2,
-	'task': u'Finish first API',
-	'session': u'Week 7',
-	'done': False
-}
-]
-
-@app.route('/todo/api/tasks',methods=['GET'])
-def get_tasks():
-	return jsonify({'tasks':mytasks})
-
+from app
+import app
+@app.route('/')
+@app.route('/index')
+def index():
+	return "Hello, World!"
