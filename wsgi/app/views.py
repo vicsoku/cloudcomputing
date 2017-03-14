@@ -1,23 +1,34 @@
-from flask import Flask, jsonify
+from app import app
+from flask import render_template, request
+import unirest
+from forms import MessageForm
+import simple
 
-app = Flask(__name__)
+@app.route('/visualization/')
+def color():
+	return simple.polynomial()
 
-mytask = [
-{
-	'id': 1,
-	'task': u'Finish Hello World',
-	'session': u'Week 7',
-	'done': True
-},
-{
-	'id': 2,
-	'task': u'Finish First API',
-	'session': u'Week 7',
-	'done': False
-}
-]
+@app.route('/')
+@app.route('/index/')
+def index():
+    return render_template("index.html")
 
-@app.route('/todo/api/tasks', methods=['GET'])
-def get_tasks():
-	return jsonify({'tasks': mytasks})
- 
+@app.route('/emotion/')
+def emotion():
+	return render_template("my_form.html",mood='happy',form=MessageForm())
+
+@app.route('/emotion/', methods=['POST'])
+def emotion_post():
+	msg = request.form['message']
+	response = unirest.post("https://community-sentiment.p.mashape.com/text/",
+	  headers={
+	    "X-Mashape-Key": "6VWQcE5umumsh9oLsHfFlOseFGbDp1caaUKjsnj6PJRqxZKslv",
+	    "Content-Type": "application/x-www-form-urlencoded",
+    	"Accept": "application/json"
+    	},
+  		params={
+    	"txt": msg
+  		}
+	)
+	return render_template("my_form.html",mood=response.body['result']['sentiment'],form=MessageForm())
+
