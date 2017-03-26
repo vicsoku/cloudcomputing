@@ -4,6 +4,11 @@ import unirest
 from forms import MessageForm
 import simple
 
+
+@app.route('/database/collections', methods=['GET'])
+def get_all_databases():
+	return jsonify({'result' : mongo.db.collection_names()})
+
 @app.route('/visualization/')
 def color():
 	return simple.polynomial()

@@ -1,16 +1,10 @@
-'''This example demonstrates embedding a standalone Bokeh document
-into a simple Flask application, with a basic HTML web form.
-To view the example, run:
-    python simple.py
-in this directory, and navigate to:
-    http://localhost:5000
-'''
 import flask
 
 from bokeh.embed import components
 from bokeh.plotting import figure
 from bokeh.resources import INLINE
 from bokeh.util.string import encode_utf8
+
 
 colors = {
     'Black': '#000000',
@@ -57,4 +51,3 @@ def polynomial():
         to=to
     )
     return encode_utf8(html)
-
