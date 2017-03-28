@@ -3,11 +3,12 @@ from flask import render_template, request
 import unirest
 from forms import MessageForm
 import simple
+import database
 
 
-@app.route('/database/collections', methods=['GET'])
-def get_all_databases():
-	return jsonify({'result' : mongo.db.collection_names()})
+#@app.route('/database/collections', methods=['GET'])
+#def get_all_databases():
+#	return jsonify({'result' : mongo.db.collection_names()})
 
 @app.route('/visualization/')
 def color():
@@ -36,4 +37,3 @@ def emotion_post():
   		}
 	)
 	return render_template("my_form.html",mood=response.body['result']['sentiment'],form=MessageForm())
-
