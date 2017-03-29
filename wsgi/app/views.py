@@ -4,14 +4,18 @@ import unirest
 from forms import MessageForm
 import simple
 import database
+from flask_navigation import Navigation
 
+nav = Navigation(app)
 
-#@app.route('/database/collections', methods=['GET'])
-#def get_all_databases():
-#	return jsonify({'result' : mongo.db.collection_names()})
+nav.Bar('top', [
+nav.Item('Home', 'index'),
+nav.Item('Emotion App', 'emotion'),
+nav.Item('Visualization', 'polynomial')   #navigation_buttons
+])
 
 @app.route('/visualization/')
-def color():
+def colur():
 	return simple.polynomial()
 
 @app.route('/')

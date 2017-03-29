@@ -14,11 +14,14 @@
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
+        <li><a href="#">{% for item in nav.top %}
+      <li class ="{{ 'active' if item.is_active else ''}}"><a href="{{ item.url }}">{{ item.label }} </a></li>{% endfor %}</a>
+    </li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
+        <li><a href="#">{% for item in nav.top %}<li class ="{{ 'active' if item.is_active else ''}}"><a href="{{ item.url }}">{{ item.label }} </a></li>{% endfor %}</a>
+    </li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -47,21 +50,22 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">About us</h5>
-          <p class="grey-text text-lighten-4">We are a startup.</p>
+          <h5 class="white-text">About me</h5>
+          <p class="grey-text text-lighten-4">I'm only 27 and I'm only getting better</p>
 
 
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">Visit</h5>
           <ul>
-            <li><a class="white-text" href="#!">Our homepage</a></li>
+            <li><a class="white-text" href="http://vesk3apitest1-vesk3.apps.devcloud.eecs.qmul.ac.uk/">Hola, App disponible aqui</a></li>
           </ul>
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">Contact</h5>
           <ul>
-            <li><a class="white-text" href="mailto:youremail@qmul.ac.uk">youremail@qmul.ac.uk</a></li>
+            <li><a class= "white-text" >Student ID: 150551089</a></li>
+            <li><a class="white-text" href="mailto:youremail@qmul.ac.uk">ec16071@qmul.ac.uk</a></li>
           </ul>
         </div>
       </div>
